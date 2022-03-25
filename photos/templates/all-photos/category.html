@@ -1,0 +1,16 @@
+{% extends 'all-photos/base.html' %}
+{% block content %}
+{{ block.super}}
+<div class="container">
+    {% for image_item in images %}
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <p>{{image_item.description}} </p>
+        </div>
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <img src=" {{image_item.my_image.url}} " alt="image">
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

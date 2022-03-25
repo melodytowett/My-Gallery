@@ -1,5 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
+import photos
+from.models import Image,Location
 # Create your views here.
 def index(request):
-    return render(request,'index.html')
+    location = Location.objects.all()
+    photos = Image.current_images(location)
+    return render(request,'index.html', {"photos":photos})
+

@@ -1,3 +1,4 @@
+from re import S
 from django.test import TestCase
 from .models import Image,Category,Location
 # Create your tests here.
@@ -31,9 +32,9 @@ class ImageTestClass(TestCase):
     #setup mathod
     def setUp(self):
         self.image=Image(name='Desert',description='chalbi desert in Africa')
-
+        # self.image.save_image()
     #Test Instance
     def test_instance(self):
         self.assertTrue(isinstance(self.image,Image))
-
+        
     #test to save method
