@@ -27,7 +27,6 @@ class LocationTestClass(TestCase):
         locations = Location.objects.all()
         self.assertTrue(len(locations) > 0)
 
-
 class ImageTestClass(TestCase):
     #setup mathod
     def setUp(self):
