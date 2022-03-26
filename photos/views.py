@@ -26,6 +26,7 @@ def location_results(request):
     ''''''
     location = Location.objects.all()
     photos = Image.current_images(location)
+    
     return render(request,'all-photos/location.html', {"photos":photos,"location":location})
 
 def photo(request,photo_id):
