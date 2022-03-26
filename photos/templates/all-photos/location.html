@@ -4,14 +4,19 @@
 <div class="container">
     {% for photo in photos %}
     <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <p>{{photo.description}} </p>
-            <p>{{photo.location}} </p>
+      <div class="card" style="width: 24rem ">
+        <div class="card-header text-center"> <b>{{photo.location}}</b> </div>
+         <img src= {% if photo.my_image %} {{photo.my_image.url}} {%else%}#{% endif %} alt="Image" class="img-responsive card-img-top"style="height: 200px; width: 230px; margin-left: 50px; margin-top: 15px;" >
+        <div class="card-body">
+          <p class="card-text">{{photo.description}}</p>
+          <div class="card-footer text-muted">
+          <h5 class="card-title">
+            {{photo.name}} place taken {{photo.location}}
+          </h5>
+          </div>
         </div>
-    </div>
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <img src= {% if photo.my_image %} {{photo.my_image.url}} {%else%}#{% endif %} alt="Image" class="img-responsive">
-    </div>
+      </div>
     {% endfor %}
 </div>
 {% endblock %}
+</div>
