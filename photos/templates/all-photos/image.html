@@ -2,10 +2,20 @@
 {% block content %}
 
 <div class="container">
- <d class="row">
-     <img src= {% if photo.my_image %} {{photo.my_image.url}} {%else%}#{% endif %} alt="Image" class="img-responsive">
-     <p> {{photo.description}} </p>
-     <p> {{photo.category}} </p>
+ <div class="row">
+     
+     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+     <div class="card" style="width: 18rem;">
+         <div class="card-header"> {{photo.name}} </div>
+           <img src= {% if photo.my_image %} {{photo.my_image.url}} {%else%}#{% endif %} alt="Image" class="img-responsive">
+      <div class="card-body">
+    <p class="card-text">{{photo.description}} </p>
+  </div>
+   <div class="card-footer text-muted">
+       <p> {{photo.category}} </p>
+  </div>
+</div>
  </div>
+</div>
 </div>
 {% endblock %}
