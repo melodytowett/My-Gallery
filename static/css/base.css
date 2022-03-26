@@ -1,0 +1,10 @@
+body{
+    background-color: aqua;
+}
+.thumbnail{
+border: 1px solid black;    
+}
+.thumbnail,img{
+height: 300px;
+width: 200px;
+}

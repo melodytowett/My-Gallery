@@ -9,20 +9,17 @@ def index(request):
     photos = Image.current_images(location)
     return render(request,'index.html', {"photos":photos})
 
-def all(request):
-    category = Category.objects.all()
-    photos = Image.all_images(category)
-    return render(request,'all-photos/category.html', {"category":category,"photos":photos})
-    
 def search_results(request):
-    if 'category' in request.GET and request.GET["category"]:
-        search_term = request.GET.get("category")
-        searched_images = Image.search_by_name(search_term)
-        message = "{search_term}"
+    locations = Location.objects.all()
 
-        return render(request,'all-photos/search.html',{"message":message,"category":searched_images})
+    if 'photo' in request.GET and request.GET["photo"]:
+        search_term = request.GET.get("photo")
+        searched_images = Image.search_by_catgory(search_term)
+        message = f"{search_term}"
+
+        return render(request,'all-photos/search.html',{"message":message, "locations":locations,"photos":searched_images})
     else:
-        message = "You havent searched fro any term"
+        message = "You havent searched for any term"
         return render(request,'all-photos/search.html',{"message":message})
 
 def location_results(request):
@@ -30,3 +27,7 @@ def location_results(request):
     location = Location.objects.all()
     photos = Image.current_images(location)
     return render(request,'all-photos/location.html', {"photos":photos,"location":location})
+
+def photo(request,photo_id):
+    photos = Image.objects.get(id=photo_id)
+    return render(request,"all-photos/category.html",{"photos":photos})

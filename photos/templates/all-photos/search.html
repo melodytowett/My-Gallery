@@ -1,17 +1,18 @@
 {% extends 'all-photos/base.html' %}
 {% block content %}
-{{block.super}}
 <div class="container">
     <div class="row">
-        {% if category %}
-        <h3>Found {{category|length}} of searched term {{message}} </h3>
+        {% if photos %}
+        <h3>Found {{photos|length}} of searched term {{message}} </h3>
+        {%else%}
+        <h3>Found 0 images in this category {{message}} </h3>
         {% endif %}
     </div>
     <div class="row">
         {% if photos %}
         {% for photo in photos %}
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <h4> {{photo.name}} </h4>
+            <h4> {{photo.category}} </h4>
              <img src= {% if photo.my_image %} {{photo.my_image.url}} {%else%}#{% endif %} alt="Image" class="img-responsive">
             <p> {{photo.description}} </p>
         </div>

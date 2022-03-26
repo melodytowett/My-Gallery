@@ -24,7 +24,7 @@ class Location(models.Model):
 class Image(models.Model):
     name = models.CharField(max_length=35)
     description=models.CharField(max_length=200)
-    my_image = models.ImageField(upload_to ='', blank=True)
+    my_image = models.ImageField(upload_to ='photos/', blank=True)
     category = models.ForeignKey(Category,on_delete=models.CASCADE,null=True)
     location = models.ForeignKey(Location,on_delete=models.CASCADE,null=True)
 
@@ -38,8 +38,8 @@ class Image(models.Model):
         self.delete()
 
     @classmethod
-    def all_images(cls,category):
-        images = cls.objects.filter(category__in=category)
+    def get_image_by_id(cls,photo_id):
+        images = cls.objects.filter(photo_id=photo_id)
         return images
 
     @classmethod
@@ -48,8 +48,8 @@ class Image(models.Model):
         return images
 
     @classmethod
-    def search_by_name(cls,search_term):
-        images = cls.objects.filter(category_name__icontains=search_term)
-        return images
+    def search_by_catgory(cls,search_term):
+        photos = cls.objects.filter(category__name__icontains=search_term)
+        return photos
     # @classmethod
     # def display_by_category(cls,category)

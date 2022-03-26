@@ -1,0 +1,11 @@
+{% extends 'all-photos/base.html' %}
+{% block content %}
+
+<div class="container">
+ <d class="row">
+     <img src= {% if photo.my_image %} {{photo.my_image.url}} {%else%}#{% endif %} alt="Image" class="img-responsive">
+     <p> {{photo.description}} </p>
+     <p> {{photo.category}} </p>
+ </div>
+</div>
+{% endblock %}

@@ -4,11 +4,15 @@
 <div class="container">
    {% for photo in photos %}
     <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bg-ligh"></div> 
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-        <p>{{photo.description}} </p>  
-       <img src= {% if photo.my_image %} {{photo.my_image.url}} {%else%}#{% endif %} alt="Image" class="img-responsive">
+        <div class="thumbnail">
+        <p class="text-center">{{photo.description}} </p>  
+       <img src= {% if photo.my_image %} {{photo.my_image.url}} {%else%}#{% endif %} alt="Image" class="img-responsive" >
        <p>Located in <b> {{photo.location}} </b></p>
     </div>
+    </div>
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bg-ligh"></div>
      </div>
     {% endfor %}
 </div>
