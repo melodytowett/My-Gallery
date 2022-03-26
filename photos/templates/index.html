@@ -3,17 +3,21 @@
 {{ block.super }}
 <div class="container">
    {% for photo in photos %}
-    <div class="row">
-        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bg-ligh"></div> 
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-        <div class="thumbnail">
+   
+<div class="container ">
+  <div class="row g-5">
+    <div class="col-6">
+     <div class="p-3 border bg-light">
         <p class="text-center">{{photo.description}} </p>  
-       <img src= {% if photo.my_image %} {{photo.my_image.url}} {%else%}#{% endif %} alt="Image" class="img-responsive" >
+       <img src= {% if photo.my_image %} {{photo.my_image.url}} {%else%}#{% endif %} alt="Image" class="img-responsive" style="height: 300px; width: 300px;">
        <p>Located in <b> {{photo.location}} </b></p>
-    </div>
-    </div>
-    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bg-ligh"></div>
+       <input type="text" value=" {{my_image.url}} " id="myImage">
+       <button onclick="myFunction">Copy image</button>
      </div>
+    </div>
+  </div>
+</div> 
     {% endfor %}
+
 </div>
 {% endblock %}

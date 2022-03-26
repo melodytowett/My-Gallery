@@ -13,7 +13,6 @@
     {% endif %}
     {% block styles %}
       {% bootstrap_css %}
-      <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}  
 </head>
 <body>
@@ -22,8 +21,6 @@
        {% block scripts %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
      {% bootstrap_javascript %}
-     <h5 class="text-center"> “A picture can tell a thousand words,
-        but a few words can change it’s story.” </h5>
         {% endblock %}
     {% endblock %}
 </body>
