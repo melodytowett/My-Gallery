@@ -5,12 +5,13 @@
     {% for photo in photos %}
     <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <p>{{photo.description}} </p>
+            <p>{{photo.category}} </p>
         </div>
-    </div>
+   
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
         <img src= {% if photo.my_image %} {{photo.my_image.url}} {%else%}#{% endif %} alt="Image" class="img-responsive">
     </div>
+     </div>
     {% endfor %}
 </div>
 {% endblock %}
