@@ -1,3 +1,4 @@
+from email.mime import image
 from django.db import models
 
 # Create your models here.
@@ -36,4 +37,9 @@ class Image(models.Model):
     @classmethod
     def current_images(cls,location):
         images = cls.objects.filter(location__in=location)
+        return images
+
+    @classmethod
+    def search_by_name(cls,search_term):
+        images = cls.objects.filter(name__icontains=search_term)
         return images

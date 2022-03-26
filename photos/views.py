@@ -7,4 +7,3 @@ def index(request):
     location = Location.objects.all()
     photos = Image.current_images(location)
     return render(request,'index.html', {"photos":photos})
-
