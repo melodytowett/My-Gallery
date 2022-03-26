@@ -1,3 +1,4 @@
+from email import message
 from unicodedata import category
 from django.shortcuts import render
 
@@ -26,9 +27,16 @@ def location_results(request):
     ''''''
     location = Location.objects.all()
     photos = Image.current_images(location)
-    
-    return render(request,'all-photos/location.html', {"photos":photos,"location":location})
+    if 'photo' in request.GET and request.GET["photo"]:
+        search_location = request.GET.get("photo")
+        found_location = Image.find_by_location(search_location)
+        message = f"{search_location}"
+        return render(request,'all-photos/location.html', {"photos":photos,"location":location,"message":message,"photos":found_location})
+    else:
+        message = "No suce Location"
+        return render(request,'all-photos/location.html',{"message":message})
 
 def photo(request,photo_id):
     photo = Image.objects.get(id=photo_id)
+
     return render(request,"all-photos/image.html",{"photo":photo})
