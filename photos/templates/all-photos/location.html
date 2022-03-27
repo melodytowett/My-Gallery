@@ -2,10 +2,7 @@
 {% block content %}
 {{ block.super }}
 <div class="container">
-    {% for photo in photos %}
-    <div class="row">
        <div class="row">
-        {% if photos %}
         {% for photo in photos %}
           <div class="card" style="width: 30rem">
         <div class="card-header text-center"> <b>{{photo.name}}</b> </div>
@@ -22,9 +19,7 @@
         </div>
       </div>
        {% endfor %}
-        {% endif %}
+   
     </div>
-    {% endfor %}
-</div>
-{% endblock %}
+ {% endblock %}
 </div>
