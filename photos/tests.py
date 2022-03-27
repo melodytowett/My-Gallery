@@ -1,3 +1,5 @@
+from os import name
+from pydoc import locate
 from re import S
 from django.test import TestCase
 from .models import Image,Category,Location
@@ -32,9 +34,18 @@ class ImageTestClass(TestCase):
     #setup mathod
     def setUp(self):
         self.image=Image(name='Desert',description='chalbi desert in Africa')
-        # self.image.save_image()
+        self.image.save_image()
     #Test Instance
     def test_instance(self):
         self.assertTrue(isinstance(self.image,Image))
         
     #test to save method
+
+    def tearDown(self):
+        Image.objects.all().delete()
+        Location.objects.all().delete()
+        Category.objects.all().delete()
+
+    def test_get_images_by_location(self):
+        current_image = Image.current_images()
+        self.assertTrue(len(current_image)>0)

@@ -9,7 +9,7 @@
           <p class="card-text">{{photo.description}}</p>
           <div class="card-footer text-muted">
           <h5 class="card-title">
-            {{photo.name}} place taken {{photo.location}}
+              <a href=" {% url 'photo' photo.id %} ">{{photo.name}} place taken {{photo.location}} </a>
           </h5>
           </div>
            <div class="card-footer text-muted">
