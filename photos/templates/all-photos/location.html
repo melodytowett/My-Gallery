@@ -20,7 +20,7 @@
     </div>
     <div class="row">
         {% if photos %}
-        {% for photo in photos %}
+        {% for photo in location %}
           <div class="card" style="width: 30rem">
         <div class="card-header text-center"> <b>{{photo.name}}</b> </div>
          <img src= {% if photo.my_image %} {{photo.my_image.url}} {%else%}#{% endif %} alt="Image" class="img-responsive card-img-top"style="height: 300px; width: 300px; margin-left: 10px;" >

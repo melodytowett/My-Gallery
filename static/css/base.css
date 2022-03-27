@@ -1,9 +1,12 @@
 
 #photos{
-display: inline-flex;
-flex-direction: column-reverse;
-
+display: flex;
+flex-direction: column;
+align-self: center;
+margin-left: 100px;
+background-image: url("trav3.jpeg");
 }
+
 .tooltip{
     position: relative;
     display: inline-block;
