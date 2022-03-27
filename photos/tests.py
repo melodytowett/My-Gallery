@@ -38,6 +38,10 @@ class LocationTestClass(TestCase):
         self.location.save_loc()
         locations = Location.objects.all()
         self.assertTrue(len(locations) > 0)
+    def test_delete_location(self):
+        self.location.save_loc()
+        self.location.delete_loc()
+        self.assertTrue(len(Location.objects.all())==0)
 
 class ImageTestClass(TestCase):
     #setup mathod

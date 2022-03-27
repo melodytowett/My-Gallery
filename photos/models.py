@@ -1,5 +1,6 @@
 
 
+from ast import Delete
 from django.db import models
 
 
@@ -13,7 +14,7 @@ class Category(models.Model):
     
     def save_cat(self):
         self.save()
-        
+
     def delete_cat(self):
         self.delete()
 
@@ -26,6 +27,8 @@ class Location(models.Model):
 
     def save_loc(self):
         self.save()
+    def delete_loc(self):
+        self.delete()
 
 class Image(models.Model):
     name = models.CharField(max_length=35)
