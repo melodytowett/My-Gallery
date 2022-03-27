@@ -1,26 +1,45 @@
 {%extends 'all-photos/base.html' %} {% block content %} {{ block.super }}
+
 <div class="container">
   {% for photo in photos %}
     <div class="row">
+      <div class="col-4">
        <div class="card" id="indexcard" style="width: 30rem ; ">
-        <div class="card-header text-center"> <b>{{photo.name}}</b> </div>
-         <img src= {% if photo.my_image %} {{photo.my_image.url}} {%else%}#{% endif %} alt="Image" class="img-responsive card-img-top"style="height: 300px; width: 300px; margin-left: 50px; margin-top: 15px;" >
+        <div class="card-header text-center"> <b>{{photo.name}} location {{photo.location}} </b> </div>
+         <img src= {% if photo.my_image %} {{photo.my_image.url}} {%else%}#{% endif %} alt="Image" class="img-responsive card-img-top"style="height: 200px; width: 200px; margin-left: 50px; margin-top: 15px;" >
         <div class="card-body">
           <p class="card-text">{{photo.description}}</p>
           <div class="card-footer text-muted">
           <h5 class="card-title">
-              <a href=" {% url 'photo' photo.id %} ">{{photo.name}} place taken {{photo.location}} </a>
+              <a href=" {% url 'photo' photo.id %} ">View Image </a>
           </h5>
           </div>
            <div class="card-footer text-muted">
-            <input type="text" value=" {{photo.my_image.url}} " id="myImage" />
-            <div class="tooltip">
-            <button onclick="myFunction()" onmouseout="ouFunc()"> <span class="tooltiptext" id="myTooltip">Copy to clipboard</span> Copy image</button>
+            <a href=""><input type="text" value=" {{photo.my_image.url}} " id="myImage" /></a>
+            <button onclick="myFunction()" onmouseout="outFunc()">  Copy image</button>
           </div>
-          </div>
+          
         </div>
+      </div>
       </div>
     </div>
   {% endfor %}
 </div>
+    <script>
+            function myFuntion(){
+        var copyText = document.getElementById("myImage");
+        /*select the text field*/
+        copyText.Select();
+        copyText.setSelectionrange(0,99999);
+        /*copy text to clipboard */
+        navigator.clipboard.writeText(copyText.value);
+        /*alert copied text */
+        var tooltip = document.getElementById("mytooltip");
+        tooltip.innerHTML = "Copied:" + copyText.value;
+    }
+    function outFunc(){
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Copy to clipboard";
+    }
+    </script>
 {% endblock %}

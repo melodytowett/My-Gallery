@@ -26,8 +26,14 @@ def search_results(request):
 def location_results(request):
     ''''''
     locations = Location.objects.all()
-    photos = Image.find_by_location(locations)
-    return render(request,'all-photos/location.html', {"photos":photos,"locations":locations,})
+    if 'phot'in request.GET and request.GET["photo"]:
+        search_by_location = request.GET.get("photo")
+        images_found = Image.find_by_location(search_by_location)
+        message = f"{search_by_location}"
+        return render(request,'all-photos/location.html', {"photos":images_found,"locations":locations,})
+    else:
+        message = "No images taken in that location"
+        return render(request,'all-photos/location.html',{"message":message})
 
 def photo(request,photo_id):
     try:
