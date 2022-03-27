@@ -9,7 +9,6 @@ urlpatterns = [
     path('search/',views.search_results,name='search_results'),
     path('location/',views.location_results, name = 'location_results'),
     path('<int:photo_id>/',views.photo,name='photo'),
-
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

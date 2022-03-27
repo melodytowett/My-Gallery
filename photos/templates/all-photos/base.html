@@ -13,6 +13,7 @@
     {% endif %}
     {% block styles %}
       {% bootstrap_css %}
+      <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}  
 </head>
 <body>
@@ -21,7 +22,9 @@
        {% block scripts %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
      {% bootstrap_javascript %}
+     <script src=" {% static 'css/script.js' %} "></script>
         {% endblock %}
     {% endblock %}
+
 </body>
 </html>
