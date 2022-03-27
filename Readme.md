@@ -10,7 +10,7 @@
 
 ****
 ## Description
-Application that helps one Use one minute of their time to explain n somthing to impress someone. The site allows one to add a pitch comment on other people pitches add profile and vote for pitches.
+Application that displays images of different categories
 
 ## Live link
 
