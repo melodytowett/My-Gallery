@@ -1,12 +1,11 @@
-from os import name
-from pydoc import locate
-from re import S
+
 from django.test import TestCase
 from .models import Image,Category,Location
 # Create your tests here.
 class CategoryTestClass(TestCase):
     def setUp(self):
         self.category = Category(name='Nature')
+        
 
     def test_instance(self):
         self.assertTrue(isinstance(self.category,Category))
@@ -16,6 +15,16 @@ class CategoryTestClass(TestCase):
         self.category.save_cat()
         categories = Category.objects.all()
         self.assertTrue(len(categories) > 0)
+
+    def test_delete_category(self):
+        self.category.save_cat()
+        self.category.delete_cat()
+        self.assertTrue(len(Category.objects.all())==0)
+
+    # def test_update_category(self):
+    #     update_cat = Category.update_category('Travel','Food')
+    #     self.assertEqual(update_cat.name,'Travel')
+
     
 
 class LocationTestClass(TestCase):
@@ -46,6 +55,6 @@ class ImageTestClass(TestCase):
         Location.objects.all().delete()
         Category.objects.all().delete()
 
-    def test_get_images_by_location(self):
-        current_image = Image.current_images()
-        self.assertTrue(len(current_image)>0)
+    # def test_get_images_by_location(self):
+    #     current_image = Image.current_images(location=)
+    #     self.assertTrue(len(current_image)>0)
