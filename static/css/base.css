@@ -1,3 +1,9 @@
+
+#photos{
+display: inline-flex;
+flex-direction: column-reverse;
+
+}
 .tooltip{
     position: relative;
     display: inline-block;

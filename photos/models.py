@@ -57,5 +57,5 @@ class Image(models.Model):
        
     @classmethod
     def find_by_location(cls,search_by_location):
-        photos = cls.objects.filter(location__name__in= search_by_location)
+        photos = cls.objects.filter(location__name__icontains= search_by_location)
         return photos
