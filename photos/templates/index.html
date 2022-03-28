@@ -8,13 +8,19 @@ $('#myModal').on('shown.bs.modal', function () {
   .container{
     margin-top: 50px;
   }
+  img{
+    width: 200px;
+    height: 200px;
+  }
 </style>
 <div class="container">
+ 
   {% for photo in photos %}
  <!-- Button trigger modal -->
 <button type="button" data-toggle="modal" data-target="#exampleModalCenter">
-  <div class="card">
-  <img src= {% if photo.my_image %} {{photo.my_image.url}} {%else%}#{% endif %} alt="Image" class="img-responsive card-img-top"style="height: 300px; width: 300px; margin-left: 10px;" >
+  <div class="card 24rem">
+     <img src=" {{photo.my_image.url}} " alt="{{photo.name}}">
+     <span><a href="{% url 'photo' photo.id %}">view image</a> </span>
   </div>
 </button>
 
@@ -29,8 +35,9 @@ $('#myModal').on('shown.bs.modal', function () {
         </button>
       </div>
       <div class="modal-body">
-        <img src= {% if photo.my_image %} {{photo.my_image.url}} {%else%}#{% endif %} alt="Image" class="img-responsive card-img-top"style="height: 300px; width: 300px; margin-left: 10px;" >
-        <div class="card-body">{{photo.description}}</div>
+        <img src=" {{photo.my_image.url}} " alt="{{photo.name}}" srcset="">
+       
+        <div class="card-body">{{photo.description}} </div>
       </div>
       <div class="modal-footer">
         <a href=""><input type="text" value=" {{photo.my_image.url}} " id="{{my_image.id}}.url" /></a>
@@ -40,6 +47,7 @@ $('#myModal').on('shown.bs.modal', function () {
   </div>
 </div>
   {% endfor %}
+
    </div>
 </div>
 {%block script%}
