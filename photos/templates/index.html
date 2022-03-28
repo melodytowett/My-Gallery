@@ -29,7 +29,8 @@ $('#myModal').on('shown.bs.modal', function () {
         </button>
       </div>
       <div class="modal-body">
-        {{photo.description}}
+        <img src= {% if photo.my_image %} {{photo.my_image.url}} {%else%}#{% endif %} alt="Image" class="img-responsive card-img-top"style="height: 300px; width: 300px; margin-left: 10px;" >
+        <div class="card-body">{{photo.description}}</div>
       </div>
       <div class="modal-footer">
         <a href=""><input type="text" value=" {{photo.my_image.url}} " id="{{my_image.id}}.url" /></a>
