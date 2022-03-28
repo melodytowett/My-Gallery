@@ -20,8 +20,8 @@
           </h5>
           <p class="card-text">{{photo.description}}</p>
           <div class="card-footer text-muted">
-            <input type="text" value=" {{photo.my_image.url}} " id="myImage" />
-            <button onclick="myFunction">Copy image</button>
+         <a href=""><input type="text" value=" {{photo.my_image.url}} " id="{{my_image.id}}.url" /></a>
+      <button onclick="copyLink('{{my_image.id}}.url')" onmouseout="outFunc()"> Copy image</button>
           </div>
         </div>
       </div>
@@ -29,4 +29,12 @@
         {% endif %}
     </div>
 </div>
+{%block script%}
+  <script>
+ copyLink = (element) => {
+ document.getElementById(element).select();
+ document.execCommand("copy");
+                                                             }
+ </script>
+  {%endblock%}
 {% endblock %}

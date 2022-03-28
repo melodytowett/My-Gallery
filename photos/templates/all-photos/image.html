@@ -11,8 +11,19 @@
   </div>
    <div class="card-footer text-muted">
        <p> {{photo.category}} </p>
+     <a href=""><input type="text" value=" {{photo.my_image.url}} " id="{{my_image.id}}.url" /></a>
+      <button onclick="copyLink('{{my_image.id}}.url')" onmouseout="outFunc()"> Copy image</button>
   </div>
  </div>
 </div>
+
 </div>
+{%block script%}
+  <script>
+ copyLink = (element) => {
+ document.getElementById(element).select();
+ document.execCommand("copy");
+                                                             }
+ </script>
+  {%endblock%}
 {% endblock %}
